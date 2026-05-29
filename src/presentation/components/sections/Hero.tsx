@@ -10,7 +10,7 @@ export function Hero() {
   );
 
   return (
-    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden py-16 sm:py-20 lg:py-28">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden py-16 sm:py-20 lg:py-28">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
