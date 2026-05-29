@@ -43,6 +43,7 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
+            onClick={() => setIsMenuOpen(false)}
             className={`flex items-center gap-2 text-xl font-bold transition-colors ${
               !isTransparent ? "text-primary-800 hover:text-primary-600" : "text-white hover:text-gray-200"
             }`}
