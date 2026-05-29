@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* ========================================
+   Design Tokens — Eletroinfo Regis
+   Paleta: Azul / Dourado / Branco
+   ======================================== */
+
+:root {
+  /* Primary — Azul */
+  --color-primary-900: #0f2440;
+  --color-primary-800: #1a365d;
+  --color-primary-700: #1e4078;
+  --color-primary-600: #2b6cb0;
+  --color-primary-500: #3182ce;
+  --color-primary-400: #63a3e8;
+  --color-primary-100: #ebf4ff;
+  --color-primary-50: #f0f7ff;
+
+  /* Accent — Dourado */
+  --color-accent-700: #8b6914;
+  --color-accent-600: #b8860b;
+  --color-accent-500: #d4a017;
+  --color-accent-400: #e8b83a;
+  --color-accent-300: #f6e27a;
+  --color-accent-100: #fdf8e8;
+
+  /* Neutros */
+  --color-white: #ffffff;
+  --color-off-white: #f7f8fa;
+  --color-gray-100: #e2e8f0;
+  --color-gray-200: #cbd5e1;
+  --color-gray-500: #64748b;
+  --color-gray-600: #4a5568;
+  --color-gray-700: #334155;
+  --color-gray-900: #1a202c;
+
+  /* WhatsApp */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #128c7e;
+
+  /* Semantic */
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-gray-900);
+  --color-muted: var(--color-gray-600);
+  --color-border: var(--color-gray-100);
+}
+
+@theme inline {
+  --color-primary-900: var(--color-primary-900);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-50: var(--color-primary-50);
+
+  --color-accent-700: var(--color-accent-700);
+  --color-accent-600: var(--color-accent-600);
+  --color-accent-500: var(--color-accent-500);
+  --color-accent-400: var(--color-accent-400);
+  --color-accent-300: var(--color-accent-300);
+  --color-accent-100: var(--color-accent-100);
+
+  --color-off-white: var(--color-off-white);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+
+  --color-whatsapp: var(--color-whatsapp);
+  --color-whatsapp-dark: var(--color-whatsapp-dark);
+
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+
+  --font-sans: var(--font-inter);
+
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.5s ease-out;
+  --animate-scale-in: scale-in 0.3s ease-out;
+  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 8px rgba(37, 211, 102, 0);
+  }
+}
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   Focus Styles — Accessibility
+   ======================================== */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========================================
+   Selection
+   ======================================== */
+
+::selection {
+  background: var(--color-accent-300);
+  color: var(--color-primary-900);
+}
