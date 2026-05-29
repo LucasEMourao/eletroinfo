@@ -3,7 +3,7 @@ import { services } from "@/content";
 import { SITE_URL } from "@/shared";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/sobre", "/contato", "/servicos"].map((route) => ({
+  const staticRoutes = ["", "/sobre", "/servicos"].map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: new Date(),
     changeFrequency: (route === "" ? "weekly" : "monthly") as

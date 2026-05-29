@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import SobrePage from "@/app/sobre/page";
-import ContatoPage from "@/app/contato/page";
 import ServicosPage from "@/app/servicos/page";
 import ServicoDetalhePage from "@/app/servicos/[slug]/page";
 
@@ -26,16 +25,6 @@ describe("Sprint 6 Pages", () => {
     it("should render the main heading", () => {
       render(<SobrePage />);
       expect(screen.getByRole("heading", { name: /Nossa História/i })).toBeInTheDocument();
-    });
-  });
-
-  describe("Contato Page", () => {
-    it("should render the contact form and info", () => {
-      render(<ContatoPage />);
-      const headings = screen.getAllByRole("heading", { name: /Entre em Contato/i });
-      expect(headings.length).toBeGreaterThanOrEqual(1);
-      // Verifies if ContactForm is rendered
-      expect(screen.getByRole("button", { name: /enviar mensagem/i })).toBeInTheDocument();
     });
   });
 

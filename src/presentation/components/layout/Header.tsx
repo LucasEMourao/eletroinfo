@@ -1,27 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Container } from "@/presentation/components/ui/Container";
 
 const navLinks = [
   { href: "/", label: "Início" },
   { href: "/servicos", label: "Serviços" },
   { href: "/sobre", label: "Sobre" },
-  { href: "/contato", label: "Contato" },
+  { href: "/#contato", label: "Contato" },
 ];
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  const isHome = pathname === "/";
+  const isTransparent = isHome && !isScrolled;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-white/95 backdrop-blur-sm">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isTransparent 
+          ? "bg-transparent border-transparent py-2"
+          : "bg-white/95 backdrop-blur-sm border-b border-border shadow-sm py-0"
+      }`}
+    >
       <Container>
         <div className="flex h-16 items-center justify-between sm:h-20">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 text-xl font-bold text-primary-800 transition-colors hover:text-primary-600"
+            className={`flex items-center gap-2 text-xl font-bold transition-colors ${
+              !isTransparent ? "text-primary-800 hover:text-primary-600" : "text-white hover:text-gray-200"
+            }`}
           >
             <span className="text-2xl">⚡</span>
             <span>
@@ -36,7 +60,11 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-800"
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  !isTransparent 
+                    ? "text-gray-700 hover:bg-primary-50 hover:text-primary-800" 
+                    : "text-white/90 hover:text-white hover:bg-white/10"
+                }`}
               >
                 {link.label}
               </Link>
@@ -45,7 +73,7 @@ export function Header() {
               href="https://wa.me/5511998765432"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-whatsapp-dark"
+              className="ml-2 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-2 text-sm font-semibold text-white shadow-md transition-all hover:bg-whatsapp-dark hover:-translate-y-0.5"
             >
               <svg
                 className="h-4 w-4"
@@ -63,7 +91,9 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="inline-flex items-center justify-center rounded-lg p-2 text-gray-700 transition-colors hover:bg-primary-50 lg:hidden"
+            className={`inline-flex items-center justify-center rounded-lg p-2 transition-colors lg:hidden ${
+              !isTransparent || isMenuOpen ? "text-gray-700 hover:bg-primary-50" : "text-white hover:bg-white/10"
+            }`}
             aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
           >
             {isMenuOpen ? (
@@ -104,7 +134,7 @@ export function Header() {
       {/* Mobile Navigation Dropdown */}
       <nav
         data-testid="mobile-nav"
-        className={`absolute left-0 right-0 top-full flex flex-col bg-white border-b border-border shadow-xl transition-all duration-300 ease-in-out lg:hidden overflow-hidden ${
+        className={`absolute left-0 right-0 top-full z-50 flex flex-col bg-white border-b border-border shadow-xl transition-all duration-300 ease-in-out lg:hidden overflow-hidden ${
           isMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >

@@ -6,7 +6,7 @@ import { formatPhoneDisplay } from "@/shared";
 const navLinks = [
   { href: "/servicos", label: "Serviços" },
   { href: "/sobre", label: "Sobre" },
-  { href: "/contato", label: "Contato" },
+  { href: "/#contato", label: "Contato" },
 ];
 
 export function Footer() {

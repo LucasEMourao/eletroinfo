@@ -144,7 +144,7 @@ export default async function ServicoDetailPage({ params }: Props) {
               >
                 💬 Solicitar Orçamento
               </Button>
-              <Button variant="secondary" size="lg" href="/contato" className="border-white text-white hover:bg-white/10">
+              <Button variant="secondary" size="lg" href="/#contato" className="border-white text-white hover:bg-white/10">
                 Enviar Mensagem
               </Button>
             </div>
