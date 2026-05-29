@@ -1,2 +1,1 @@
-// Form components — implementation in Sprint 6
-// ContactForm
+export { ContactForm } from "./ContactForm";
