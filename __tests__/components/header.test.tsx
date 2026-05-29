@@ -57,15 +57,15 @@ describe("Header component", () => {
 
     // Menu should be hidden initially
     const nav = screen.getByTestId("mobile-nav");
-    expect(nav).toHaveClass("translate-x-full");
+    expect(nav).toHaveClass("max-h-0", "opacity-0");
 
     // Click to open
     await user.click(openButton);
-    expect(nav).not.toHaveClass("translate-x-full");
+    expect(nav).not.toHaveClass("max-h-0", "opacity-0");
 
     // Click to close
     const closeButton = screen.getByRole("button", { name: /fechar menu/i });
     await user.click(closeButton);
-    expect(nav).toHaveClass("translate-x-full");
+    expect(nav).toHaveClass("max-h-0", "opacity-0");
   });
 });
