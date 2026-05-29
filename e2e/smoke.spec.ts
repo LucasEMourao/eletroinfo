@@ -10,6 +10,6 @@ test.describe("Smoke test", () => {
     await page.goto("/");
     const heading = page.getByRole("heading", { level: 1 });
     await expect(heading).toBeVisible();
-    await expect(heading).toContainText("Eletroinfo Regis");
+    await expect(heading).toContainText("Sua eletrônica parou");
   });
 });
