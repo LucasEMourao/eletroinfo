@@ -1,1 +1,3 @@
-// Content layer — implementations added in Sprint 3
+export { business } from "./business";
+export { services } from "./services";
+export { brands } from "./brands";
