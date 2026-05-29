@@ -18,7 +18,7 @@ export function Header() {
   const pathname = usePathname();
 
   const isHome = pathname === "/";
-  const isTransparent = isHome && !isScrolled;
+  const isTransparent = isHome && !isScrolled && !isMenuOpen;
 
   useEffect(() => {
     const handleScroll = () => {
