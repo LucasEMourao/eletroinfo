@@ -1,2 +1,4 @@
-// Section components — implementation in Sprint 5b
-// Hero, ServicesList, BrandGrid, Trust
+export { Hero } from "./Hero";
+export { ServicesList } from "./ServicesList";
+export { BrandGrid } from "./BrandGrid";
+export { TrustSection } from "./TrustSection";
