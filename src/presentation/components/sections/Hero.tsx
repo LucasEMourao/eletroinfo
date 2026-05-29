@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/presentation/components/ui/Button";
 import { Container } from "@/presentation/components/ui/Container";
 import { generateGenericWhatsAppLink } from "@/application";
@@ -9,16 +10,17 @@ export function Hero() {
   );
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-16 sm:py-20 lg:py-28">
-      {/* Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 25% 50%, rgba(212, 160, 23, 0.3) 0%, transparent 50%), radial-gradient(circle at 75% 50%, rgba(212, 160, 23, 0.2) 0%, transparent 50%)",
-        }}
-        aria-hidden="true"
-      />
+    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden py-16 sm:py-20 lg:py-28">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero-bg.png"
+          alt="Bancada de manutenção eletrônica"
+          fill
+          priority
+          className="object-cover object-center brightness-50"
+        />
+      </div>
 
       <Container className="relative z-10">
         <div className="mx-auto max-w-3xl text-center">
@@ -47,6 +49,7 @@ export function Hero() {
               href={whatsappLink.url}
               target="_blank"
               rel="noopener noreferrer"
+              className="shadow-xl transition-all hover:-translate-y-0.5 hover:shadow-2xl"
             >
               <svg
                 className="h-5 w-5"
@@ -62,7 +65,7 @@ export function Hero() {
               variant="secondary"
               size="lg"
               href="/servicos"
-              className="border-white/30 text-white hover:bg-white/10"
+              className="border border-white/20 bg-white/10 text-white backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-white/20"
             >
               Ver Serviços
             </Button>
