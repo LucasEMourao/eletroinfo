@@ -43,7 +43,13 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={(e) => {
+              setIsMenuOpen(false);
+              if (isHome) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
             className={`flex items-center gap-2 text-xl font-bold transition-colors ${
               !isTransparent ? "text-primary-800 hover:text-primary-600" : "text-white hover:text-gray-200"
             }`}
@@ -61,6 +67,12 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={(e) => {
+                  if (isHome && link.href === "/") {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
                 className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                   !isTransparent 
                     ? "text-gray-700 hover:bg-primary-50 hover:text-primary-800" 
@@ -145,7 +157,13 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => {
+                setIsMenuOpen(false);
+                if (isHome && link.href === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className="rounded-lg px-4 py-3 text-lg font-medium text-gray-700 transition-colors hover:bg-primary-50 hover:text-primary-800"
             >
               {link.label}
