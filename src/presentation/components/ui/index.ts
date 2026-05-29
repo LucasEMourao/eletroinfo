@@ -1,2 +1,5 @@
-// UI components — implementation in Sprint 4
-// Button, Container, Section, Badge, Card
+export { Button } from "./Button";
+export { Container } from "./Container";
+export { Section } from "./Section";
+export { Badge } from "./Badge";
+export { Card } from "./Card";
