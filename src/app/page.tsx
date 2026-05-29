@@ -4,6 +4,7 @@ import { ServicesList } from "@/presentation/components/sections/ServicesList";
 import { BrandGrid } from "@/presentation/components/sections/BrandGrid";
 import { TrustSection } from "@/presentation/components/sections/TrustSection";
 import { BeforeAfterSection } from "@/presentation/components/sections/BeforeAfterSection";
+import { ContactSection } from "@/presentation/components/sections/ContactSection";
 
 export const metadata: Metadata = {
   title: "Eletroinfo Regis — Assistência Técnica Eletrônica",
@@ -25,6 +26,7 @@ export default function Home() {
       <BeforeAfterSection />
       <BrandGrid />
       <TrustSection />
+      <ContactSection />
     </>
   );
 }
