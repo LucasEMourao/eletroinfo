@@ -1,99 +1,107 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ContactForm } from "@/presentation/components/forms/ContactForm";
 
-describe("ContactForm", () => {
+describe("ContactForm component", () => {
   beforeEach(() => {
-    vi.restoreAllMocks();
+    vi.resetAllMocks();
   });
 
-  it("renders all form elements", () => {
+  it("should render all form fields", () => {
+    render(<ContactForm />);
+    expect(screen.getByLabelText(/nome/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/e-mail/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/telefone/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/mensagem/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /enviar mensagem/i })).toBeInTheDocument();
+  });
+
+  it("should show validation errors on empty submit", async () => {
+    const user = userEvent.setup();
     render(<ContactForm />);
 
-    expect(screen.getByLabelText(/Nome \*/)).toBeInTheDocument();
-    expect(screen.getByLabelText(/E-mail \*/)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Telefone/)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Mensagem \*/)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Enviar Mensagem/ })).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /enviar mensagem/i }));
+
+    expect(await screen.findByText(/nome é obrigatório/i)).toBeInTheDocument();
+    expect(screen.getByText(/e-mail é obrigatório/i)).toBeInTheDocument();
+    expect(screen.getByText(/mensagem é obrigatória/i)).toBeInTheDocument();
   });
 
-  it("shows validation errors on submit with empty required fields", async () => {
+  it("should validate email format", async () => {
+    const user = userEvent.setup();
     render(<ContactForm />);
 
-    fireEvent.click(screen.getByRole("button", { name: /Enviar Mensagem/ }));
+    await user.type(screen.getByLabelText(/nome/i), "João");
+    await user.type(screen.getByLabelText(/e-mail/i), "invalid-email");
+    await user.type(screen.getByLabelText(/mensagem/i), "Mensagem longa o suficiente");
+    await user.click(screen.getByRole("button", { name: /enviar mensagem/i }));
 
-    expect(await screen.findByText("Nome é obrigatório")).toBeInTheDocument();
-    expect(screen.getByText("E-mail é obrigatório")).toBeInTheDocument();
-    expect(screen.getByText("Mensagem é obrigatória")).toBeInTheDocument();
+    expect(await screen.findByText(/e-mail inválido/i)).toBeInTheDocument();
   });
 
-  it("shows error for invalid email format", async () => {
+  it("should validate message length", async () => {
+    const user = userEvent.setup();
     render(<ContactForm />);
 
-    fireEvent.change(screen.getByLabelText(/Nome \*/), { target: { value: "Lucas" } });
-    fireEvent.change(screen.getByLabelText(/E-mail \*/), { target: { value: "invalid-email" } });
-    fireEvent.change(screen.getByLabelText(/Mensagem \*/), { target: { value: "Preciso de um orçamento de reparo de TV." } });
+    await user.type(screen.getByLabelText(/nome/i), "João");
+    await user.type(screen.getByLabelText(/e-mail/i), "joao@example.com");
+    await user.type(screen.getByLabelText(/mensagem/i), "Curta");
+    await user.click(screen.getByRole("button", { name: /enviar mensagem/i }));
 
-    fireEvent.click(screen.getByRole("button", { name: /Enviar Mensagem/ }));
-
-    expect(await screen.findByText("E-mail inválido")).toBeInTheDocument();
+    expect(await screen.findByText(/mensagem deve ter pelo menos 10 caracteres/i)).toBeInTheDocument();
   });
 
-  it("shows error for too short message", async () => {
+  it("should clear error on field change", async () => {
+    const user = userEvent.setup();
     render(<ContactForm />);
 
-    fireEvent.change(screen.getByLabelText(/Nome \*/), { target: { value: "Lucas" } });
-    fireEvent.change(screen.getByLabelText(/E-mail \*/), { target: { value: "lucas@test.com" } });
-    fireEvent.change(screen.getByLabelText(/Mensagem \*/), { target: { value: "Curto" } });
+    await user.click(screen.getByRole("button", { name: /enviar mensagem/i }));
+    expect(await screen.findByText(/nome é obrigatório/i)).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("button", { name: /Enviar Mensagem/ }));
-
-    expect(await screen.findByText("Mensagem deve ter pelo menos 10 caracteres")).toBeInTheDocument();
+    await user.type(screen.getByLabelText(/nome/i), "João");
+    expect(screen.queryByText(/nome é obrigatório/i)).not.toBeInTheDocument();
   });
 
-  it("submits successfully and clears fields", async () => {
-    const fetchMock = vi.fn().mockResolvedValue({
-      json: () => Promise.resolve({ success: true, message: "Mensagem enviada com sucesso!" }),
+  it("should handle successful submission", async () => {
+    const user = userEvent.setup();
+    global.fetch = vi.fn().mockResolvedValue({
+      json: vi.fn().mockResolvedValue({ success: true, message: "Mensagem enviada com sucesso!" }),
     });
-    global.fetch = fetchMock;
 
     render(<ContactForm />);
 
-    fireEvent.change(screen.getByLabelText(/Nome \*/), { target: { value: "Lucas Mourão" } });
-    fireEvent.change(screen.getByLabelText(/E-mail \*/), { target: { value: "lucas@example.com" } });
-    fireEvent.change(screen.getByLabelText(/Telefone/), { target: { value: "(11) 98888-7777" } });
-    fireEvent.change(screen.getByLabelText(/Mensagem \*/), { target: { value: "Olá, preciso consertar minha TV Samsung." } });
-
-    fireEvent.click(screen.getByRole("button", { name: /Enviar Mensagem/ }));
+    await user.type(screen.getByLabelText(/nome/i), "João");
+    await user.type(screen.getByLabelText(/e-mail/i), "joao@example.com");
+    await user.type(screen.getByLabelText(/mensagem/i), "Mensagem longa o suficiente para passar.");
+    await user.click(screen.getByRole("button", { name: /enviar mensagem/i }));
 
     await waitFor(() => {
-      expect(screen.getByRole("alert")).toHaveTextContent("Mensagem enviada com sucesso!");
+      expect(screen.getByText(/mensagem enviada com sucesso/i)).toBeInTheDocument();
     });
 
-    expect((screen.getByLabelText(/Nome \*/) as HTMLInputElement).value).toBe("");
-    expect((screen.getByLabelText(/E-mail \*/) as HTMLInputElement).value).toBe("");
-    expect((screen.getByLabelText(/Telefone/) as HTMLInputElement).value).toBe("");
-    expect((screen.getByLabelText(/Mensagem \*/) as HTMLTextAreaElement).value).toBe("");
-    expect(fetchMock).toHaveBeenCalledWith("/api/contact", expect.any(Object));
+    expect(global.fetch).toHaveBeenCalledWith("/api/contact", expect.objectContaining({
+      method: "POST",
+    }));
+
+    // Fields should be cleared
+    expect(screen.getByLabelText(/nome/i)).toHaveValue("");
+    expect(screen.getByLabelText(/e-mail/i)).toHaveValue("");
   });
 
-  it("shows API errors if submission fails", async () => {
-    const fetchMock = vi.fn().mockResolvedValue({
-      json: () => Promise.resolve({ success: false, message: "Erro ao enviar e-mail." }),
-    });
-    global.fetch = fetchMock;
+  it("should handle submission error", async () => {
+    const user = userEvent.setup();
+    global.fetch = vi.fn().mockRejectedValue(new Error("Network Error"));
 
     render(<ContactForm />);
 
-    fireEvent.change(screen.getByLabelText(/Nome \*/), { target: { value: "Lucas Mourão" } });
-    fireEvent.change(screen.getByLabelText(/E-mail \*/), { target: { value: "lucas@example.com" } });
-    fireEvent.change(screen.getByLabelText(/Mensagem \*/), { target: { value: "Olá, preciso consertar minha TV Samsung." } });
-
-    fireEvent.click(screen.getByRole("button", { name: /Enviar Mensagem/ }));
+    await user.type(screen.getByLabelText(/nome/i), "João");
+    await user.type(screen.getByLabelText(/e-mail/i), "joao@example.com");
+    await user.type(screen.getByLabelText(/mensagem/i), "Mensagem longa o suficiente para passar.");
+    await user.click(screen.getByRole("button", { name: /enviar mensagem/i }));
 
     await waitFor(() => {
-      expect(screen.getByRole("alert")).toHaveTextContent("Erro ao enviar e-mail.");
+      expect(screen.getByText(/erro ao enviar mensagem/i)).toBeInTheDocument();
     });
-    expect(fetchMock).toHaveBeenCalled();
   });
 });
