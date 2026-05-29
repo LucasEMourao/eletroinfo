@@ -3,6 +3,7 @@ import { Hero } from "@/presentation/components/sections/Hero";
 import { ServicesList } from "@/presentation/components/sections/ServicesList";
 import { BrandGrid } from "@/presentation/components/sections/BrandGrid";
 import { TrustSection } from "@/presentation/components/sections/TrustSection";
+import { BeforeAfterSection } from "@/presentation/components/sections/BeforeAfterSection";
 
 export const metadata: Metadata = {
   title: "Eletroinfo Regis — Assistência Técnica Eletrônica",
@@ -21,6 +22,7 @@ export default function Home() {
     <>
       <Hero />
       <ServicesList />
+      <BeforeAfterSection />
       <BrandGrid />
       <TrustSection />
     </>
