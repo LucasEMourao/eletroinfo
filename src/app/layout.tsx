@@ -54,8 +54,8 @@ export default function RootLayout({
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: -23.5505,
-      longitude: -46.6333,
+      latitude: -16.7352,
+      longitude: -43.8615,
     },
     openingHoursSpecification: [
       {

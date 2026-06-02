@@ -83,7 +83,7 @@ export function Header() {
               </Link>
             ))}
             <Link
-              href="https://wa.me/5511998765432"
+              href="https://wa.me/5538988525941"
               target="_blank"
               rel="noopener noreferrer"
               className="ml-2 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-2 text-sm font-semibold text-white shadow-md transition-all hover:bg-whatsapp-dark hover:-translate-y-0.5"
@@ -174,7 +174,7 @@ export function Header() {
         {/* Mobile Nav Footer */}
         <div className="px-4 pb-6 pt-2">
           <Link
-            href="https://wa.me/5511998765432"
+            href="https://wa.me/5538988525941"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsMenuOpen(false)}
