@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/presentation/components/ui/Container";
 import { business } from "@/content";
 import { formatPhoneDisplay } from "@/shared";
@@ -19,9 +20,15 @@ export function Footer() {
         <div className="grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:py-16">
           {/* Brand Column */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-block text-xl font-bold">
-              <span className="text-2xl">⚡</span>{" "}
-              Eletroinfo <span className="text-accent-400">Regis</span>
+            <Link href="/" className="inline-flex items-center gap-2 text-base xs:text-lg sm:text-xl font-bold">
+              <Image
+                src="/images/logo.png"
+                alt="Logo Eletrônica Fernandes"
+                width={40}
+                height={40}
+                className="h-8 w-8 sm:h-10 sm:w-10 object-contain translate-y-[1px] sm:translate-y-[2px]"
+              />
+              <span>Eletrônica Fernandes</span>
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-primary-100/80">
               {business.tagline}. {business.description.slice(0, 120)}...
@@ -127,7 +134,7 @@ export function Footer() {
 
         {/* Copyright Bar */}
         <div className="border-t border-primary-700 py-4 text-center text-xs text-primary-100/60">
-          © {currentYear} Eletroinfo Regis. Todos os direitos reservados.
+          © {currentYear} Eletrônica Fernandes. Todos os direitos reservados.
         </div>
       </Container>
     </footer>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Container } from "@/presentation/components/ui/Container";
 
@@ -50,15 +51,18 @@ export function Header() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className={`flex items-center gap-2 text-xl font-bold transition-colors ${
+            className={`flex items-center gap-2 text-base xs:text-lg sm:text-xl font-bold transition-colors ${
               !isTransparent ? "text-primary-800 hover:text-primary-600" : "text-white hover:text-gray-200"
             }`}
           >
-            <span className="text-2xl">⚡</span>
-            <span>
-              Eletroinfo{" "}
-              <span className="text-accent-500">Regis</span>
-            </span>
+            <Image
+              src="/images/logo.png"
+              alt="Logo Eletrônica Fernandes"
+              width={40}
+              height={40}
+              className="h-8 w-8 sm:h-10 sm:w-10 object-contain translate-y-[1px] sm:translate-y-[2px]"
+            />
+            <span>Eletrônica Fernandes</span>
           </Link>
 
           {/* Desktop Navigation */}

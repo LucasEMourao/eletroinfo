@@ -10,15 +10,15 @@ export function Hero() {
   );
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden py-16 sm:py-20 lg:py-28">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-28 pb-16 sm:pt-20 sm:pb-20 lg:py-28">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-bg.png"
-          alt="Bancada de manutenção eletrônica"
+          src="/images/hero-bg-store.jpg"
+          alt="Fachada da assistência técnica Eletrônica Fernandes"
           fill
           priority
-          className="object-cover object-center brightness-50"
+          className="object-cover object-left brightness-[0.35]"
         />
       </div>
 
