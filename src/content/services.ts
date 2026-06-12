@@ -13,17 +13,6 @@ export const services: Service[] = [
     category: "conserto",
   },
   {
-    id: "srv-02",
-    title: "Conserto de Celular",
-    slug: "conserto-de-celular",
-    shortDescription:
-      "Troca de tela, bateria, conector de carga e reparos gerais.",
-    longDescription:
-      "Serviço especializado em reparo de smartphones e tablets. Realizamos troca de tela, substituição de bateria, reparo de conector de carga, botões, câmera, alto-falante e microfone. Atendemos todas as marcas incluindo Apple, Samsung, Motorola, Xiaomi e outras. Peças de qualidade com garantia.",
-    icon: "📱",
-    category: "conserto",
-  },
-  {
     id: "srv-03",
     title: "Conserto de Notebook",
     slug: "conserto-de-notebook",
@@ -46,17 +35,6 @@ export const services: Service[] = [
     category: "instalacao",
   },
   {
-    id: "srv-05",
-    title: "Manutenção de Ar Condicionado",
-    slug: "manutencao-de-ar-condicionado",
-    shortDescription:
-      "Limpeza, manutenção preventiva e reparo de ar condicionado.",
-    longDescription:
-      "Realizamos limpeza completa, manutenção preventiva e corretiva de aparelhos de ar condicionado split, janela e portátil. Higienização de filtros e serpentina, recarga de gás, reparo de placas eletrônicas e verificação de vazamentos. Serviço essencial para garantir eficiência energética e qualidade do ar.",
-    icon: "❄️",
-    category: "manutencao",
-  },
-  {
     id: "srv-06",
     title: "Assistência em Áudio e Som",
     slug: "assistencia-em-audio-e-som",
@@ -77,16 +55,5 @@ export const services: Service[] = [
       "Manutenção e reparo de fornos micro-ondas residenciais e industriais. Troca de magnetron, reparo de painel e teclado, substituição de motor do prato giratório, fusíveis e componentes elétricos. Serviço rápido com peças de qualidade e garantia. Atendemos todas as marcas.",
     icon: "🍳",
     category: "conserto",
-  },
-  {
-    id: "srv-08",
-    title: "Manutenção de Impressora",
-    slug: "manutencao-de-impressora",
-    shortDescription:
-      "Reparo e manutenção de impressoras jato de tinta e laser.",
-    longDescription:
-      "Serviço completo de manutenção para impressoras jato de tinta, laser e multifuncionais. Limpeza de cabeçote, desentupimento, troca de peças desgastadas, configuração de rede e resolução de erros de impressão. Atendemos HP, Epson, Canon, Brother, Samsung e outras marcas.",
-    icon: "🖨️",
-    category: "manutencao",
   },
 ];

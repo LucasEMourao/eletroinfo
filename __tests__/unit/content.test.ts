@@ -26,8 +26,8 @@ describe("Business content", () => {
 });
 
 describe("Services content", () => {
-  it("should have at least 6 services", () => {
-    expect(services.length).toBeGreaterThanOrEqual(6);
+  it("should have at least 4 services", () => {
+    expect(services.length).toBeGreaterThanOrEqual(4);
   });
 
   it("should have all required fields on every service", () => {
