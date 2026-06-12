@@ -17,8 +17,8 @@ export function BeforeAfterSection() {
         
         <div className="mt-10 mx-auto max-w-4xl">
           <BeforeAfterSlider
-            beforeImage="/images/before-repair.png"
-            afterImage="/images/after-repair.png"
+            beforeImage="/images/before-repair.webp"
+            afterImage="/images/after-repair.webp"
             beforeLabel="Tela Quebrada"
             afterLabel="Tela Nova"
           />
