@@ -1,7 +1,7 @@
 import type { BusinessProfile } from "@/domain";
 
 export const business: BusinessProfile = {
-  name: "Eletroinfo Regis",
+  name: "Eletrônica Fernandes",
   tagline: "Tecnologia com confiança",
   description:
     "Assistência técnica especializada em conserto e manutenção de equipamentos eletrônicos. Mais de 15 anos de experiência atendendo as principais marcas do mercado com garantia, agilidade e transparência.",

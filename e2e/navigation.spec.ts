@@ -5,7 +5,7 @@ test.describe("Navigation Flow", () => {
     if (isMobile) return;
 
     await page.goto("/");
-    await expect(page).toHaveTitle(/Eletroinfo Regis/);
+    await expect(page).toHaveTitle(/Eletrônica Fernandes/);
 
     // Navigate to Sobre
     await page.getByTestId("desktop-nav").getByRole("link", { name: "Sobre", exact: true }).click();
@@ -26,7 +26,7 @@ test.describe("Navigation Flow", () => {
     if (!isMobile) return;
 
     await page.goto("/");
-    await expect(page).toHaveTitle(/Eletroinfo Regis/);
+    await expect(page).toHaveTitle(/Eletrônica Fernandes/);
 
     // Open mobile menu and go to Sobre
     await page.waitForTimeout(1000); // Wait for React hydration

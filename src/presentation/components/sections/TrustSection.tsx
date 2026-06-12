@@ -32,7 +32,7 @@ export function TrustSection() {
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
             Por que escolher a{" "}
-            <span className="text-accent-400">Eletroinfo Regis</span>?
+            <span className="text-accent-400">Eletrônica Fernandes</span>?
           </h2>
           <p className="mt-3 text-primary-100/70 sm:text-lg">
             Confiança e qualidade que você pode contar

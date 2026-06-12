@@ -21,17 +21,18 @@ vi.mock("next/link", () => ({
 describe("Footer component", () => {
   it("should render business name", () => {
     render(<Footer />);
-    expect(screen.getByText(/Eletroinfo Regis/i)).toBeInTheDocument();
+    const names = screen.getAllByText(/Eletrônica Fernandes/i);
+    expect(names.length).toBeGreaterThanOrEqual(1);
   });
 
   it("should render contact phone", () => {
     render(<Footer />);
-    expect(screen.getByText(/99876-5432/)).toBeInTheDocument();
+    expect(screen.getByText(/98852-5941/)).toBeInTheDocument();
   });
 
   it("should render address", () => {
     render(<Footer />);
-    expect(screen.getByText(/Rua dos Eletrônicos/i)).toBeInTheDocument();
+    expect(screen.getByText(/Rua Corrêa Machado/i)).toBeInTheDocument();
   });
 
   it("should render opening hours", () => {

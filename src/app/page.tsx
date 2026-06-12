@@ -7,11 +7,11 @@ import { BeforeAfterSection } from "@/presentation/components/sections/BeforeAft
 import { ContactSection } from "@/presentation/components/sections/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Eletroinfo Regis — Assistência Técnica Eletrônica",
+  title: "Eletrônica Fernandes — Assistência Técnica Eletrônica",
   description:
-    "Assistência técnica especializada em conserto de TVs, celulares, notebooks e mais. Atendemos Samsung, LG, Sony, Apple e outras marcas com garantia.",
+    "Assistência técnica especializada em conserto de TVs, notebooks, equipamentos de áudio, micro-ondas e mais. Atendemos as principais marcas com garantia.",
   openGraph: {
-    title: "Eletroinfo Regis — Assistência Técnica Eletrônica",
+    title: "Eletrônica Fernandes — Assistência Técnica Eletrônica",
     description:
       "Assistência técnica especializada em conserto de eletrônicos com garantia e qualidade.",
     type: "website",

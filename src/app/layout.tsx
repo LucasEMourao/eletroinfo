@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://eletroinfo.com.br"
   ),
   title: {
-    default: "Eletroinfo Regis — Assistência Técnica Eletrônica",
-    template: "%s | Eletroinfo Regis",
+    default: "Eletrônica Fernandes — Assistência Técnica Eletrônica",
+    template: "%s | Eletrônica Fernandes",
   },
   description:
     "Assistência técnica especializada em conserto de eletrônicos. Atendemos as principais marcas com garantia e qualidade.",

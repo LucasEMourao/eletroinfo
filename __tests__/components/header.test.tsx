@@ -23,7 +23,7 @@ vi.mock("next/link", () => ({
 describe("Header component", () => {
   it("should render the logo/business name", () => {
     render(<Header />);
-    const logos = screen.getAllByText(/Eletroinfo/i);
+    const logos = screen.getAllByText(/Eletrônica/i);
     expect(logos.length).toBeGreaterThanOrEqual(1);
   });
 

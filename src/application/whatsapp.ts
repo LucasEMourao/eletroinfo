@@ -35,7 +35,7 @@ export function generateServiceWhatsAppLink(
  */
 export function generateGenericWhatsAppLink(phone: string): WhatsAppLink {
   const message =
-    "Olá! Gostaria de saber mais sobre os serviços da Eletroinfo Regis.";
+    "Olá! Gostaria de saber mais sobre os serviços da Eletrônica Fernandes.";
 
   return generateWhatsAppLink({ phone, message });
 }
